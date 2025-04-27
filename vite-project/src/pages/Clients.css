@@ -1,0 +1,80 @@
+.client-page {
+    padding: 24px;
+    background-color: #f4f6f8;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .client-title {
+    font-size: 28px;
+    margin-bottom: 24px;
+    color: #2d3748;
+  }
+  
+  .client-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    padding: 24px;
+  }
+  
+  .client-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .client-btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .client-btn.add {
+    background-color: #38a169;
+    color: white;
+  }
+  
+  .client-btn.add:hover {
+    background-color: #2f855a;
+  }
+  
+  .client-btn.edit {
+    background-color: #3182ce;
+    color: white;
+    margin-right: 6px;
+  }
+  
+  .client-btn.edit:hover {
+    background-color: #2b6cb0;
+  }
+  
+  .client-btn.delete {
+    background-color: #e53e3e;
+    color: white;
+  }
+  
+  .client-btn.delete:hover {
+    background-color: #c53030;
+  }
+  
+  .client-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .client-table th, .client-table td {
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+  }
+  
+  .client-table th {
+    background-color: #edf2f7;
+    color: #2d3748;
+  }
+  

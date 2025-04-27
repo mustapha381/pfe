@@ -1,0 +1,71 @@
+/* Menu haut */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-section {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-section.logo h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.navbar-section.nav-menu {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+.navbar-section.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 0 15px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.nav-link.active-link {
+  border-bottom: 2px solid #fff;
+}
+
+.icon {
+  margin-right: 5px;
+}
+
+.user-icon {
+  margin-right: 10px;
+}
+
+.logout-icon {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Espacement du contenu principal sous la navbar */
+.main-content {
+  margin-top: 60px; /* Ajuster en fonction de la hauteur de la navbar */
+  padding: 20px;
+  flex-grow: 1;
+}
