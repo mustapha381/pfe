@@ -1,99 +1,69 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import './CommandesClients.css';
 
-function CommandesClients() {
-  const [clients, setClients] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [selectedClient, setSelectedClient] = useState('');
-  const [selectedProducts, setSelectedProducts] = useState([]);
-  const navigate = useNavigate();
+const CommandesClients = () => {
+  const [commandes, setCommandes] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/api/clients').then(res => setClients(res.data));
-    axios.get('http://localhost:3001/api/products').then(res => setProducts(res.data));
+    axios.get('http://localhost:3001/api/commandes-clients')
+      .then(res => setCommandes(res.data));
   }, []);
 
-  const addProduct = (productId) => {
-    if (!selectedProducts.find(p => p.produit_id === productId)) {
-      setSelectedProducts([...selectedProducts, { produit_id: productId, quantite: 1 }]);
-    }
-  };
-
-  const updateQuantity = (index, value) => {
-    const updated = [...selectedProducts];
-    updated[index].quantite = value;
-    setSelectedProducts(updated);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!selectedClient || selectedProducts.length === 0) {
-      alert("Client ou produits manquants !");
-      return;
-    }
-
-    try {
-      await axios.post('http://localhost:3001/api/commandes', {
-        client_id: selectedClient,
-        produits: selectedProducts,
-        statut_paiement: 'non payé'
-      });
-      alert("✅ Commande créée !");
-      navigate('/dashboard/commandes-clients');
-    } catch (err) {
-      console.error(err.response?.data || err.message);
-      alert("Erreur création commande.");
-    }
+  const supprimer = (id) => {
+    axios.delete(`http://localhost:3001/api/commandes-clients/${id}`)
+      .then(() => setCommandes(commandes.filter(c => c.id !== id)));
   };
 
   return (
-    <div className="page-container">
-      <h2>🛒 Créer une Commande Client</h2>
+    <div className="commandes-container">
+      <div className="commandes-header">
+        <h2>📦 Commandes Clients</h2>
+        <Link to="/dashboard/commandes/add" className="btn-ajouter">➕ Ajouter une commande</Link>
+      </div>
 
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Client :</label>
-          <select value={selectedClient} onChange={(e) => setSelectedClient(e.target.value)} required>
-            <option value="">-- Sélectionner un client --</option>
-            {clients.map(client => (
-              <option key={client.id} value={client.id}>{client.nom} {client.prenom}</option>
+      <div className="table-wrapper">
+        <table className="table-commandes">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+              <th>Âge</th>
+              <th>Produits</th>
+              <th>Total</th>
+              <th>Paiement</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {commandes.map(c => (
+              <tr key={c.id}>
+                <td>{new Date(c.date_commande).toLocaleString()}</td>
+                <td>{c.nom}</td>
+                <td>{c.prenom}</td>
+                <td>{c.email}</td>
+                <td>{c.age}</td>
+                <td>{c.produits}</td>
+                <td>{c.total} €</td>
+                <td>{c.paiement}</td>
+                <td>
+                <button className="btn-modifier" onClick={() => navigate(`/dashboard/commandes-clients/edit/${c.id}`)}>✏️</button>
+                  <button className="btn-supprimer" onClick={() => supprimer(c.id)}>🗑️</button>
+                </td>
+              </tr>
             ))}
-          </select>
-        </div>
-
-        <div className="form-group">
-          <h3>Ajouter des Produits :</h3>
-          {products.map(prod => (
-            <div key={prod.id} className="product-item">
-              {prod.name} (Stock: {prod.quantity})
-              <button type="button" onClick={() => addProduct(prod.id)}>Ajouter</button>
-            </div>
-          ))}
-        </div>
-
-        <div className="form-group">
-          <h3>Panier :</h3>
-          {selectedProducts.map((item, index) => {
-            const prod = products.find(p => p.id === item.produit_id);
-            return (
-              <div key={index}>
-                {prod.name}
-                <input type="number"
-                  value={item.quantite}
-                  min="1"
-                  max={prod.quantity}
-                  onChange={(e) => updateQuantity(index, Number(e.target.value))}
-                />
-              </div>
-            );
-          })}
-        </div>
-
-        <button className="btn btn-green" type="submit">Valider la Commande</button>
-      </form>
+            {commandes.length === 0 && (
+              <tr><td colSpan="9" className="empty-row">Aucune commande trouvée.</td></tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
-}
+};
 
 export default CommandesClients;
+

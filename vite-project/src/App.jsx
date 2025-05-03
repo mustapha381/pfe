@@ -10,10 +10,14 @@ import AddProduct from "./pages/AddProduct";
 import EditProduct from "./pages/EditProduct";
 import CategoryList from "./pages/CategoryList";
 import Clients from "./pages/Clients";
-import CommandesClients from "./pages/CommandesClients";
-import Fournisseurs from "./pages/Fournisseurs";
-import CommandesFournisseurs from "./pages/CommandesFournisseurs";
 import AddClient from "./pages/AddClient";
+import CommandesClients from "./pages/CommandesClients";
+import AddCommande from "./pages/AddCommande";
+import Fournisseurs from "./pages/Fournisseurs";
+import AddFournisseur from "./pages/AddFournisseur"; // ✅ import ajouté
+import CommandesFournisseurs from "./pages/CommandesFournisseurs";
+import AddCommandeFournisseur from "./pages/AddCommandeFournisseur";
+import EditCommandeFournisseur from "./pages/EditCommandeFournisseur";
 
 
 function App() {
@@ -22,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
@@ -32,10 +37,15 @@ function App() {
           <Route path="stock" element={<Stock />} />
           <Route path="stats" element={<Stats />} />
           <Route path="clients" element={<Clients />} />
-          <Route path="commandes-clients" element={<CommandesClients />} />
-          <Route path="fournisseurs" element={<Fournisseurs />} />
-          <Route path="commandes-fournisseur" element={<CommandesFournisseurs />} />
           <Route path="clients/add" element={<AddClient />} />
+          <Route path="commandes" element={<CommandesClients />} />
+          <Route path="commandes/add" element={<AddCommande />} />
+          <Route path="fournisseurs" element={<Fournisseurs />} />
+          <Route path="fournisseurs/add" element={<AddFournisseur />} /> 
+          <Route path="commandesFournisseurs" element={<CommandesFournisseurs />} />
+          <Route path="commandesFournisseurs/add" element={<AddCommandeFournisseur />} />
+          <Route path="commandesFournisseurs/edit/:id" element={<EditCommandeFournisseur />} />
+
         </Route>
       </Routes>
     </BrowserRouter>

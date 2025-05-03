@@ -37,8 +37,8 @@ function Dashboard() {
             <FaUserCircle className="icon" /> Clients
           </button>
           <button
-            className={`nav-link ${isActive("/dashboard/commandes-clients") ? "active" : ""}`}
-            onClick={() => navigate("/dashboard/commandes-clients")}
+            className={`nav-link ${isActive("/dashboard/commandes") ? "active" : ""}`}
+            onClick={() => navigate("/dashboard/commandes")}
           >
             <FaUserCircle className="icon" /> Commandes Clients
           </button>
@@ -50,7 +50,8 @@ function Dashboard() {
           </button>
           <button
             className={`nav-link ${isActive("/dashboard/commandes-fournisseurs") ? "active" : ""}`}
-            onClick={() => navigate("/dashboard/commandes-fournisseurs")}
+            onClick={() => navigate("/dashboard/commandesFournisseurs")}
+
           >
             <FaUserCircle className="icon" /> Commandes Fournisseurs
           </button>

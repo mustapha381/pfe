@@ -1,0 +1,90 @@
+.commandes-container {
+  padding: 30px;
+  background: #f9f9f9;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.commandes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.commandes-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.btn-ajouter {
+  padding: 10px 20px;
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-ajouter:hover {
+  background-color: #1b4f72;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-commandes {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-commandes thead {
+  background-color: #2e86de;
+  color: white;
+}
+
+.table-commandes th,
+.table-commandes td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+.table-commandes tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-supprimer {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-supprimer:hover {
+  background-color: #c0392b;
+}
+
+.empty-row {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+}
+.btn-modifier {
+  background-color: #ffc107;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+

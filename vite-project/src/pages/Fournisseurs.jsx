@@ -36,47 +36,53 @@ function Fournisseurs() {
         <div className="fournisseur-section-header">
           <h3>Liste des Fournisseurs</h3>
           <button className="fournisseur-btn add" onClick={() => navigate("/dashboard/fournisseurs/add")}>
-            ➕ Ajouter un fournisseur
+            ➕ Ajouter
           </button>
         </div>
 
-        <table className="fournisseur-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nom</th>
-              <th>Adresse</th>
-              <th>Email</th>
-              <th>Téléphone</th>
-              <th>Spécialité</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {fournisseurs.map((fournisseur) => (
-              <tr key={fournisseur.id}>
-                <td>{fournisseur.id}</td>
-                <td>{fournisseur.nom}</td>
-                <td>{fournisseur.adresse}</td>
-                <td>{fournisseur.email}</td>
-                <td>{fournisseur.telephone}</td>
-                <td>{fournisseur.specialite}</td>
-                <td>
-                  <button className="fournisseur-btn edit" onClick={() => navigate(`/dashboard/fournisseurs/edit/${fournisseur.id}`)}>
-                    ✏️ Modifier
-                  </button>
-                  <button className="fournisseur-btn delete" onClick={() => deleteFournisseur(fournisseur.id)}>
-                    🗑️ Supprimer
-                  </button>
-                </td>
+        <div className="table-wrapper">
+          <table className="fournisseur-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Spécialité</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {fournisseurs.map((fournisseur) => (
+                <tr key={fournisseur.id}>
+                  <td>{fournisseur.id}</td>
+                  <td>{fournisseur.nom}</td>
+                  <td>{fournisseur.prenom}</td>
+                  <td>{fournisseur.email}</td>
+                  <td>{fournisseur.tel}</td>
+                  <td>{fournisseur.specialite}</td>
+                  <td>
+                    <button className="fournisseur-btn edit" onClick={() => navigate(`/dashboard/fournisseurs/edit/${fournisseur.id}`)}>
+                      ✏️
+                    </button>
+                    <button className="fournisseur-btn delete" onClick={() => deleteFournisseur(fournisseur.id)}>
+                      🗑️
+                    </button>
+                  </td>
+                </tr>
+              ))}
+              {fournisseurs.length === 0 && (
+                <tr>
+                  <td colSpan="7" className="no-data">Aucun fournisseur trouvé</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
 }
 
 export default Fournisseurs;
-

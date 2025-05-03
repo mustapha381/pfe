@@ -1,93 +1,104 @@
 .fournisseur-page {
-    padding: 20px;
-    background-color: #f5f7fa;
-    min-height: 100vh;
-  }
-  
-  .fournisseur-title {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .fournisseur-section {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .fournisseur-section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .fournisseur-section-header h3 {
-    margin: 0;
-    font-size: 1.8rem;
-    color: #444;
-  }
-  
-  .fournisseur-btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .fournisseur-btn.add {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .fournisseur-btn.add:hover {
-    background-color: #45a049;
-  }
-  
-  .fournisseur-btn.edit {
-    background-color: #2196f3;
-    color: white;
-    margin-right: 10px;
-  }
-  
-  .fournisseur-btn.edit:hover {
-    background-color: #1976d2;
-  }
-  
-  .fournisseur-btn.delete {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .fournisseur-btn.delete:hover {
-    background-color: #d32f2f;
-  }
-  
-  .fournisseur-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .fournisseur-table th,
-  .fournisseur-table td {
-    padding: 12px 15px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .fournisseur-table th {
-    background-color: #f0f0f0;
-    font-weight: bold;
-  }
-  
-  .fournisseur-table tr:hover {
-    background-color: #f9f9f9;
-  }
-  
+  padding: 30px;
+  background: #eef2f6;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.fournisseur-title {
+  font-size: 2.8rem;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.fournisseur-section {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.fournisseur-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.fournisseur-section-header h3 {
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+.fournisseur-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.fournisseur-btn.add {
+  background-color: #27ae60;
+  color: white;
+}
+
+.fournisseur-btn.add:hover {
+  background-color: #219150;
+}
+
+.fournisseur-btn.edit {
+  background-color: #2980b9;
+  color: white;
+  margin-right: 8px;
+}
+
+.fournisseur-btn.edit:hover {
+  background-color: #216a9e;
+}
+
+.fournisseur-btn.delete {
+  background-color: #c0392b;
+  color: white;
+}
+
+.fournisseur-btn.delete:hover {
+  background-color: #a93226;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.fournisseur-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.fournisseur-table th,
+.fournisseur-table td {
+  padding: 14px 18px;
+  text-align: center;
+  border-bottom: 1px solid #e1e1e1;
+  font-size: 0.95rem;
+}
+
+.fournisseur-table th {
+  background-color: #f4f6f9;
+  color: #555;
+}
+
+.fournisseur-table tr:hover {
+  background-color: #f0f4f8;
+}
+
+.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  padding: 20px 0;
+}

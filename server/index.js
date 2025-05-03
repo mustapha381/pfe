@@ -7,8 +7,10 @@ const mouvementRoutes = require("./routes/mouvementRoutes");
 const productRoutes = require("./routes/productRoutes");
 const categoryRoutes = require("./routes/categoryRoutes");
 const clientsRoutes = require("./routes/clientsRoutes");
-const commandesRoutes = require('./routes/commandes');
-const fournisseursRoutes = require("./routes/fournisseurs");
+const commandeClientRoutes = require("./routes/commandeClientRoutes");
+const fournisseursRoutes = require("./routes/fournisseursRoutes");
+const commandeFournisseurRoutes = require("./routes/commandeFournisseurRoutes");
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -25,8 +27,11 @@ app.use("/api/mouvements", mouvementRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/clients", clientsRoutes);
-app.use('/api/commandes', commandesRoutes);
+app.use("/api/commandes-clients", commandeClientRoutes);
 app.use("/api/fournisseurs", fournisseursRoutes);
+app.use("/api/commandes-fournisseurs", commandeFournisseurRoutes);
+app.use('/api/stock', require('./routes/stock'));
+
 
 // Route de test
 app.get("/", (req, res) => {
