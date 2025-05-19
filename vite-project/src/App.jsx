@@ -4,8 +4,8 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
-import Stock from "./pages/Stock";
-import Stats from "./pages/Stats";
+
+
 import AddProduct from "./pages/AddProduct";
 import EditProduct from "./pages/EditProduct";
 import CategoryList from "./pages/CategoryList";
@@ -18,6 +18,7 @@ import AddFournisseur from "./pages/AddFournisseur"; // ✅ import ajouté
 import CommandesFournisseurs from "./pages/CommandesFournisseurs";
 import AddCommandeFournisseur from "./pages/AddCommandeFournisseur";
 import EditCommandeFournisseur from "./pages/EditCommandeFournisseur";
+import Stock from "./pages/Stock"; 
 
 
 function App() {
@@ -34,17 +35,18 @@ function App() {
           <Route path="products/add" element={<AddProduct />} />
           <Route path="products/edit/:id" element={<EditProduct />} />
           <Route path="categories" element={<CategoryList />} />
-          <Route path="stock" element={<Stock />} />
-          <Route path="stats" element={<Stats />} />
+          
+          
           <Route path="clients" element={<Clients />} />
           <Route path="clients/add" element={<AddClient />} />
           <Route path="commandes" element={<CommandesClients />} />
           <Route path="commandes/add" element={<AddCommande />} />
           <Route path="fournisseurs" element={<Fournisseurs />} />
           <Route path="fournisseurs/add" element={<AddFournisseur />} /> 
-          <Route path="commandesFournisseurs" element={<CommandesFournisseurs />} />
+           <Route path="commandesFournisseurs" element={<CommandesFournisseurs />} />
           <Route path="commandesFournisseurs/add" element={<AddCommandeFournisseur />} />
           <Route path="commandesFournisseurs/edit/:id" element={<EditCommandeFournisseur />} />
+          <Route path="stock" element={<Stock />} />
 
         </Route>
       </Routes>

@@ -4,9 +4,6 @@ const commandeFournisseurController = require("../controllers/commandeFournisseu
 
 router.post("/", commandeFournisseurController.addCommande);
 router.get("/", commandeFournisseurController.getCommandes);
-router.get("/:id", commandeFournisseurController.getCommandeById);
-router.put("/:id", commandeFournisseurController.updateCommande);
 router.delete("/:id", commandeFournisseurController.deleteCommande);
 
 module.exports = router;
-

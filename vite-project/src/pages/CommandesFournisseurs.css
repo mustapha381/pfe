@@ -1,160 +1,114 @@
 .commandes-container {
-    padding: 2.5rem;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #f8fafc;
-    min-height: 100vh;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
 }
 
 .commandes-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
 .commandes-header h2 {
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: #1e293b;
-    margin: 0;
-    letter-spacing: -0.5px;
+  font-weight: 600;
+  font-size: 1.8rem;
 }
 
-.add-button {
-    padding: 0.65rem 1.5rem;
-    background-color: #3b82f6;
-    color: #fff;
-    border: none;
-    font-weight: 500;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.btn-ajouter {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
 }
 
-.add-button:hover {
-    background-color: #2563eb;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.btn-ajouter:hover {
+  background-color: #0056b3;
 }
 
-.add-button:active {
-    transform: translateY(0);
+.table-wrapper {
+  overflow-x: auto;
 }
 
-.commandes-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-    overflow: hidden;
+.table-commandes {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+  min-width: 700px;
 }
 
-.commandes-table thead {
-    background-color: #1e293b;
-    color: #f8fafc;
+.table-commandes thead tr {
+  background-color: #007bff;
+  color: white;
 }
 
-.commandes-table th {
-    padding: 1.25rem 1.5rem;
-    text-align: left;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    font-size: 0.75rem;
+.table-commandes th,
+.table-commandes td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
 }
 
-.commandes-table td {
-    padding: 1.25rem 1.5rem;
-    text-align: left;
-    border-bottom: 1px solid #f1f5f9;
-    color: #334155;
-    font-size: 0.925rem;
+.table-commandes tbody tr:hover {
+  background-color: #f9f9f9;
 }
 
-.commandes-table tbody tr:last-child td {
-    border-bottom: none;
-}
-
-.commandes-table tbody tr:hover {
-    background-color: #f8fafc;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 0.75rem;
-}
-
-.action-buttons button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 0.85rem;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.action-buttons .edit {
-    background-color: #f59e0b;
-    color: #fff;
-}
-
-.action-buttons .edit:hover {
-    background-color: #d97706;
-    transform: translateY(-1px);
-}
-
-.action-buttons .delete {
-    background-color: #ef4444;
-    color: white;
-}
-
-.action-buttons .delete:hover {
-    background-color: #dc2626;
-    transform: translateY(-1px);
-}
-
-/* Effet de surbrillance subtile au survol */
-.commandes-table tbody tr {
-    transition: background-color 0.2s ease;
-}
-
-/* Style pour les lignes paires */
-.commandes-table tbody tr:nth-child(even) {
-    background-color: #f9fafb;
-}
-
-/* Style pour le statut (si vous ajoutez cette colonne) */
 .status {
-    padding: 0.35rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-}
-
-.status.pending {
-    background-color: #fef3c7;
-    color: #d97706;
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+  text-transform: capitalize;
 }
 
 .status.completed {
-    background-color: #dcfce7;
-    color: #16a34a;
+  background-color: #28a745; /* vert */
+}
+
+.status.pending {
+  background-color: #ffc107; /* jaune */
+  color: #212529;
 }
 
 .status.cancelled {
-    background-color: #fee2e2;
-    color: #dc2626;
+  background-color: #dc3545; /* rouge */
+}
+
+.empty-row {
+  text-align: center;
+  padding: 2rem 0;
+  font-style: italic;
+  color: #777;
+}
+
+.btn-modifier,
+.btn-supprimer {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.btn-modifier:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}
+
+.btn-supprimer:hover {
+  color: #dc3545;
+  transform: scale(1.2);
 }

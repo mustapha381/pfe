@@ -1,192 +1,228 @@
-.commandes-container {
-  padding: 40px;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-  min-height: 100vh;
+/* AddCommande.css */
+.add-commande-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.commandes-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.commandes-header h2 {
-  margin: 0;
-  font-size: 28px;
+.add-commande-container h2 {
+  font-size: 2rem;
   font-weight: 700;
-  color: #0f172a;
-  letter-spacing: -0.5px;
-  background: linear-gradient(90deg, #3b82f6, #6366f1);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #1e293b;
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
 }
 
-.btn-ajouter {
-  padding: 12px 24px;
+.add-commande-container h2::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  border-radius: 2px;
+}
+
+.commande-form {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+              0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: all 0.3s ease;
+}
+
+.commande-form:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+              0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.75rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.form-group select, 
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #334155;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.form-group select:focus, 
+.form-group input:focus {
+  outline: none;
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.3);
+  background-color: white;
+}
+
+.produits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.produit-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.produit-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+              0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  border-color: #bfdbfe;
+}
+
+.produit-card p {
+  margin: 0.25rem 0;
+  color: #334155;
+}
+
+.produit-card p:first-child {
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.produit-card button {
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
   background: linear-gradient(135deg, #3b82f6, #6366f1);
   color: white;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 15px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2), 
-              0 2px 4px -2px rgba(59, 130, 246, 0.2);
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  transition: all 0.2s ease;
+  align-self: stretch;
+  text-align: center;
 }
 
-.btn-ajouter:hover {
+.produit-card button:hover {
   background: linear-gradient(135deg, #2563eb, #4f46e5);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3), 
-              0 4px 6px -4px rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
 }
 
-.btn-ajouter:active {
-  transform: translateY(0);
+.panier-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f8fafc;
 }
 
-.table-wrapper {
-  overflow-x: auto;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.03), 
-              0 4px 6px -4px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.table-wrapper:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 
-              0 10px 10px -6px rgba(0, 0, 0, 0.04);
-}
-
-.table-commandes {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-}
-
-.table-commandes thead {
-  background: linear-gradient(135deg, #1e293b, #334155);
-  color: white;
-}
-
-.table-commandes th {
-  padding: 16px 20px;
-  text-align: left;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.table-commandes td {
-  padding: 16px 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+.panier-list li {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   color: #334155;
-  font-size: 15px;
-  vertical-align: middle;
 }
 
-.table-commandes tbody tr:last-child td {
+.panier-list li:last-child {
   border-bottom: none;
 }
 
-.table-commandes tbody tr:hover {
-  background-color: rgba(241, 245, 249, 0.5);
-}
-
-.action-buttons {
-  display: flex;
-  gap: 8px;
+.panier-list li.empty {
   justify-content: center;
-}
-
-.btn-modifier {
-  background: linear-gradient(135deg, #f59e0b, #fbbf24);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.btn-modifier:hover {
-  background: linear-gradient(135deg, #d97706, #f59e0b);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.2);
-}
-
-.btn-supprimer {
-  background: linear-gradient(135deg, #ef4444, #f87171);
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 14px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.btn-supprimer:hover {
-  background: linear-gradient(135deg, #dc2626, #ef4444);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2);
-}
-
-.empty-row td {
-  padding: 30px;
-  text-align: center;
   color: #64748b;
   font-style: italic;
 }
 
-/* Animation d'entrée */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
 }
 
-.table-commandes tbody tr {
-  animation: fadeIn 0.5s ease-out forwards;
-  animation-fill-mode: both;
+.btn-valider {
+  padding: 0.875rem 1.75rem;
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.2), 
+              0 2px 4px -2px rgba(16, 185, 129, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Délai d'animation pour chaque ligne */
-.table-commandes tbody tr:nth-child(1) { animation-delay: 0.1s; }
-.table-commandes tbody tr:nth-child(2) { animation-delay: 0.2s; }
-.table-commandes tbody tr:nth-child(3) { animation-delay: 0.3s; }
-/* ... ajoutez plus si nécessaire */
+.btn-valider:hover {
+  background: linear-gradient(135deg, #059669, #10b981);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3), 
+              0 4px 6px -4px rgba(16, 185, 129, 0.3);
+}
 
-/* Responsive */
+.btn-valider:active {
+  transform: translateY(0);
+}
+
+/* Animation pour l'ajout au panier */
+@keyframes slideIn {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.panier-list li {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  .commandes-container {
-    padding: 20px;
+  .add-commande-container {
+    padding: 1rem;
   }
   
-  .commandes-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
+  .commande-form {
+    padding: 1.5rem;
   }
   
-  .table-commandes th, 
-  .table-commandes td {
-    padding: 12px 15px;
+  .produits-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .form-footer {
+    justify-content: center;
+  }
+  
+  .btn-valider {
+    width: 100%;
+    justify-content: center;
   }
 }

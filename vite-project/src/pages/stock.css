@@ -1,67 +1,200 @@
-.stock-container {
-  padding: 20px;
-  max-width: 900px;
-  margin: auto;
-  background-color: #fff;
-  border-radius: 10px;
+/* Variables de couleurs */
+:root {
+  --primary: #4361ee;
+  --success: #4cc9f0;
+  --warning: #f8961e;
+  --danger: #f94144;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --gray: #6c757d;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.stock-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+/* Reset et base */
+.stock-dashboard {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--dark);
 }
 
-.stock-table th,
-.stock-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
-}
-
-.stock-table th {
-  background-color: #1f1f1f;
-  color: white;
-}
-
-.btn-container {
+/* En-tête */
+.dashboard-header {
+  margin-bottom: 2rem;
   text-align: center;
 }
 
-.btn-ajout {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 5px;
-  margin: 5px;
-  cursor: pointer;
+.dashboard-header h1 {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.btn-retour {
-  background-color: #dc3545;
-  color: white;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 5px;
-  margin: 5px;
-  cursor: pointer;
+.dashboard-header .icon {
+  font-size: 2.8rem;
 }
 
-.form-container {
-  border: 1px solid #ccc;
-  padding: 20px;
+.subtitle {
+  color: var(--gray);
+  font-size: 1.1rem;
+}
+
+/* Carte principale */
+.card {
+  background: white;
   border-radius: 10px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
 }
 
-.form-container label {
-  display: block;
-  margin-top: 10px;
+.table-responsive {
+  overflow-x: auto;
 }
 
-.form-container input,
-.form-container select {
+/* Tableau */
+.stock-table {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  border-collapse: collapse;
+}
+
+.stock-table th {
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 500;
+}
+
+.stock-table th.text-right {
+  text-align: right;
+}
+
+.stock-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.stock-table tr:last-child td {
+  border-bottom: none;
+}
+
+.stock-table tr:hover {
+  background-color: rgba(67, 97, 238, 0.05);
+}
+
+/* Cellules spécifiques */
+.product-cell {
+  min-width: 200px;
+}
+
+.product-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.product-description {
+  font-size: 0.9rem;
+  color: var(--gray);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.category-tag {
+  background-color: #e9ecef;
+  color: var(--dark);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+
+.price {
+  font-weight: 600;
+  color: var(--dark);
+}
+
+/* Indicateurs de stock */
+.stock-value {
+  font-weight: 700;
+  text-align: right;
+  font-size: 1.1rem;
+}
+
+.stock-value.success {
+  color: var(--success);
+}
+
+.stock-value.warning {
+  color: var(--warning);
+}
+
+.stock-value.danger {
+  color: var(--danger);
+}
+
+.status-indicator {
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  width: fit-content;
+}
+
+.status-indicator.success {
+  background-color: rgba(76, 201, 240, 0.1);
+  color: var(--success);
+}
+
+.status-indicator.warning {
+  background-color: rgba(248, 150, 30, 0.1);
+  color: var(--warning);
+}
+
+.status-indicator.danger {
+  background-color: rgba(249, 65, 68, 0.1);
+  color: var(--danger);
+}
+
+/* Pied de page */
+.dashboard-footer {
+  text-align: center;
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+/* États de chargement */
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid var(--primary);
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  color: var(--danger);
+  text-align: center;
+  padding: 2rem;
+  background-color: rgba(249, 65, 68, 0.1);
+  border-radius: 8px;
+  margin: 2rem auto;
+  max-width: 500px;
 }

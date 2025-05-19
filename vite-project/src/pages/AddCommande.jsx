@@ -10,26 +10,41 @@ const AddCommande = () => {
   const [panier, setPanier] = useState([]);
   const [formData, setFormData] = useState({ client_id: "", paiement: "payée" });
 
+  // Quantités saisies pour chaque produit
+  const [quantites, setQuantites] = useState({});
+
   useEffect(() => {
     axios.get("http://localhost:3001/api/clients").then(res => setClients(res.data));
     axios.get("http://localhost:3001/api/products").then(res => setProduits(res.data));
   }, []);
 
+  const handleQuantiteChange = (id, value) => {
+    setQuantites({ ...quantites, [id]: value });
+  };
+
   const addToPanier = (produit) => {
+    const quantityToAdd = parseInt(quantites[produit.id]);
+    if (!quantityToAdd || quantityToAdd < 1) {
+      alert("Veuillez saisir une quantité valide !");
+      return;
+    }
+
     const exist = panier.find(item => item.id === produit.id);
     if (exist) {
       setPanier(panier.map(item =>
-        item.id === produit.id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === produit.id ? { ...item, quantity: item.quantity + quantityToAdd } : item
       ));
     } else {
-      setPanier([...panier, { ...produit, quantity: 1 }]);
+      setPanier([...panier, { ...produit, quantity: quantityToAdd }]);
     }
+
+    // Réinitialiser la quantité
+    setQuantites({ ...quantites, [produit.id]: "" });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // ✅ Nouvelle structure attendue par le backend
     const produits = panier.map(item => ({
       produit_id: item.id,
       quantity: item.quantity
@@ -58,7 +73,11 @@ const AddCommande = () => {
       <form className="commande-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label>👤 Client :</label>
-          <select value={formData.client_id} onChange={e => setFormData({ ...formData, client_id: e.target.value })} required>
+          <select
+            value={formData.client_id}
+            onChange={e => setFormData({ ...formData, client_id: e.target.value })}
+            required
+          >
             <option value="">Sélectionner un client</option>
             {clients.map(c => (
               <option key={c.id} value={c.id}>{c.nom} {c.prenom}</option>
@@ -73,6 +92,14 @@ const AddCommande = () => {
               <div key={p.id} className="produit-card">
                 <p><strong>{p.name}</strong></p>
                 <p>{p.price} €</p>
+                <input
+                  type="number"
+                  min="1"
+                  value={quantites[p.id] || ""}
+                  onChange={(e) => handleQuantiteChange(p.id, e.target.value)}
+                  className="input-quantite"
+                  placeholder="Quantité"
+                />
                 <button type="button" onClick={() => addToPanier(p)}>➕ Ajouter</button>
               </div>
             ))}
@@ -93,7 +120,10 @@ const AddCommande = () => {
 
         <div className="form-group">
           <label>💳 Paiement :</label>
-          <select value={formData.paiement} onChange={e => setFormData({ ...formData, paiement: e.target.value })}>
+          <select
+            value={formData.paiement}
+            onChange={e => setFormData({ ...formData, paiement: e.target.value })}
+          >
             <option value="payée">Payée</option>
             <option value="moitié payée">Moitié payée</option>
             <option value="non payée">Non payée</option>

@@ -10,6 +10,8 @@ const clientsRoutes = require("./routes/clientsRoutes");
 const commandeClientRoutes = require("./routes/commandeClientRoutes");
 const fournisseursRoutes = require("./routes/fournisseursRoutes");
 const commandeFournisseurRoutes = require("./routes/commandeFournisseurRoutes");
+const produitRoutes = require('./routes/produitRoutes');
+
 
 
 const app = express();
@@ -30,7 +32,8 @@ app.use("/api/clients", clientsRoutes);
 app.use("/api/commandes-clients", commandeClientRoutes);
 app.use("/api/fournisseurs", fournisseursRoutes);
 app.use("/api/commandes-fournisseurs", commandeFournisseurRoutes);
-app.use('/api/stock', require('./routes/stock'));
+app.use('/api/produits', produitRoutes);
+
 
 
 // Route de test

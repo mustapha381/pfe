@@ -48,19 +48,20 @@ function Dashboard() {
           >
             <FaUserCircle className="icon" /> Fournisseurs
           </button>
-          <button
-            className={`nav-link ${isActive("/dashboard/commandes-fournisseurs") ? "active" : ""}`}
-            onClick={() => navigate("/dashboard/commandesFournisseurs")}
+         <button
+  className={`nav-link ${isActive("/dashboard/commandesFournisseurs") ? "active" : ""}`}
+  onClick={() => navigate("/dashboard/commandesFournisseurs")}
+>
+  <FaUserCircle className="icon" /> Commandes Fournisseurs
+</button>
 
-          >
-            <FaUserCircle className="icon" /> Commandes Fournisseurs
-          </button>
-          <button
-            className={`nav-link ${isActive("/dashboard/stock") ? "active" : ""}`}
-            onClick={() => navigate("/dashboard/stock")}
-          >
-            <FaWarehouse className="icon" /> Stock
-          </button>
+         <button
+  className={`nav-link ${isActive("/dashboard/stock") ? "active" : ""}`}
+  onClick={() => navigate("/dashboard/stock")}
+>
+  <FaWarehouse className="icon" /> Stock
+</button>
+
           <button
             className={`nav-link ${isActive("/dashboard/stats") ? "active" : ""}`}
             onClick={() => navigate("/dashboard/stats")}
